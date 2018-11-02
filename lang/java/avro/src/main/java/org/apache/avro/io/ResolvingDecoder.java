@@ -254,6 +254,9 @@ public class ResolvingDecoder extends ValidatingDecoder {
     parser.advance(Symbol.ENUM);
     Symbol.EnumAdjustAction top = (Symbol.EnumAdjustAction) parser.popSymbol();
     int n = in.readEnum();
+    if (n < 0) {
+      n += top.adjustments.length;
+    }
     Object o = top.adjustments[n];
     if (o instanceof Integer) {
       return ((Integer) o).intValue();
