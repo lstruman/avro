@@ -41,7 +41,7 @@ function do_dist() {
   mvn package -DskipTests -Dhadoop.version=1;
   rm -rf mapred/target/{classes,test-classes}/;
   rm -rf trevni/avro/target/{classes,test-classes}/;
-  mvn -P dist package -DskipTests -Davro.version=$VERSION javadoc:aggregate
+  mvn -P dist package -DskipTests -Davro.version=$VERSION javadoc:aggregate -Dmaven.javadoc.skip=true
 }
 
 case "$target" in
